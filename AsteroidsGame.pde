@@ -1,10 +1,27 @@
-//your variable declarations here
+Spaceship chip;
 public void setup() 
 {
-  //your code here
+  	size(600, 600);
+  	chip = new Spaceship();
 }
 public void draw() 
 {
-  //your code here
+  	background(0);
+  	chip.show();
+  	chip.move();
 }
-
+public void keyPressed()
+{
+	if(key == 'w')
+	{
+		chip.accelerate(0.1);
+	}
+	if(key == 'd')
+	{
+		chip.turn(5);
+	}
+	if(key == 'a')
+	{
+		chip.turn(-5);
+	}
+}
