@@ -13,38 +13,22 @@ class Spaceship extends Floater
 		yCorners[2] = 0;
 		xCorners[3] = -8;
 		yCorners[3] = -8;
-	}
-	public void show()
-	{
-		stroke(255);
-		line(xCorners[0], yCorners[0], xCorners[1], yCorners[1]);
-		line(xCorners[1], yCorners[1], xCorners[2], yCorners[2]);
-		line(xCorners[2], yCorners[2], xCorners[3], yCorners[3]);
-		line(xCorners[3], yCorners[3], xCorners[0], yCorners[0]);
-	}
-	public void move()
-	{      
-    //change the x and y coordinates by myDirectionX and myDirectionY       
-    myCenterX += myDirectionX;    
-    myCenterY += myDirectionY;     
 
-    //wrap around screen    
-    if(myCenterX >width)
-    {     
-      myCenterX = 0;    
-    }    
-    else if (myCenterX<0)
-    {     
-      myCenterX = width;    
-    }    
-    if(myCenterY >height)
-    {    
-      myCenterY = 0;    
-    } 
-    
-    else if (myCenterY < 0)
-    {     
-      myCenterY = height;    
-    }   
-  }   
+		myCenterX = 300;
+		myCenterY = 300;
+		myDirectionX = 0;
+		myDirectionY = 0;
+		myPointDirection = 0;
+	}
+	public void setCenterX(double x){myCenterX = x;}
+	public double getCenterX(){return (double) myCenterX;}
+	public void setCenterY(double y){myCenterY = y;}
+	public double getCenterY(){return (double) myCenterY;}
+	public void setDirectionX(double x){myDirectionX = x;}
+	public double getDirectionX(){return (double) myDirectionX;}
+	public void setDirectionY(double y){myDirectionY = y;}
+	public double getDirectionY(){return (double) myDirectionY;}
+	public void setPointDirection(double degrees){myPointDirection = degrees;}
+	public double getPointDirection(){return (double) myPointDirection;}
+
 }
