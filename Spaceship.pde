@@ -19,6 +19,7 @@ class Spaceship extends Floater
 		myDirectionX = 0;
 		myDirectionY = 0;
 		myPointDirection = 0;
+		myColor = 255;
 	}
 	public void setCenterX(double x){myCenterX = x;}
 	public double getCenterX(){return (double) myCenterX;}
