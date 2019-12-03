@@ -2,23 +2,32 @@ Spaceship chip;
 Star[] astro;
 boolean w, a, d, f;
 int cooldown;
+ArrayList <Asteroid> JunkList = new ArrayList<Asteroid>();
 public void setup() 
 {
   	size(600, 600);
   	chip = new Spaceship();
   	astro = new Star[100];
-  	for(int i = 0; i < astro.length; i++){
+  	for(int i = 0; i < astro.length; i++)
+  	{
   		astro[i] = new Star();
-
   	}
+  	for(int i = 0; i < 10; i++)
+  	{
+  		JunkList.add(new Asteroid());
+  	}
+  	cooldown = 1000;
 }
 
 public void draw() 
 {
 	background(0);
-	
 	for(int i = 0; i < astro.length; i++){
   		astro[i].show();
+  	}
+  	for(int i = 0; i < JunkList.size(); i++){
+  		JunkList.get(i).show();
+  		JunkList.get(i).move();
   	}
   	text(cooldown, 100, 100);
   	if (cooldown < 1000){
