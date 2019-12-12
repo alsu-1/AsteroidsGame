@@ -1,18 +1,20 @@
 Spaceship chip;
 Star[] astro;
-boolean w, a, d, f;
-int cooldown;
+boolean w, a, d, f, e;
+int cooldown, bulletCooldown;
+double dist1;
 ArrayList <Asteroid> JunkList = new ArrayList<Asteroid>();
+ArrayList <Bullet> pew = new ArrayList<Bullet>();
 public void setup() 
 {
-  	size(600, 600);
+  	size(900, 900);
   	chip = new Spaceship();
   	astro = new Star[100];
   	for(int i = 0; i < astro.length; i++)
   	{
   		astro[i] = new Star();
   	}
-  	for(int i = 0; i < 10; i++)
+  	for(int i = 0; i < 20; i++)
   	{
   		JunkList.add(new Asteroid());
   	}
@@ -33,6 +35,9 @@ public void draw()
   	if (cooldown < 1000){
   		cooldown += 1;
   	}
+  	if (bulletCooldown < 25){
+  		bulletCooldown += 1;
+  	}
   	if(w){
   		chip.accelerate(0.08);
   	}
@@ -51,6 +56,24 @@ public void draw()
 	  		chip.setPointDirection(Math.random() * 360);
 	  		cooldown = 0;
 	  	}
+  	}
+  	if(e && bulletCooldown == 25){
+  		pew.add(new Bullet(chip));
+  		bulletCooldown = 0;
+  	}
+  	for(Bullet tempPew : pew){
+  		tempPew.show();
+  		tempPew.move();
+  	}
+  	for(int i = 0; i < JunkList.size(); i++){
+  		for(int j = 0; j < pew.size(); j++){
+  			dist1 = dist(JunkList.get(i).getX(), JunkList.get(i).getY(), pew.get(j).getX(), pew.get(j).getY());
+  			if (dist1 < 25) {
+  				JunkList.remove(i);
+  				pew.remove(j);
+  				break;
+  			}
+  		}
   	}
   	chip.show();
   	chip.move();
@@ -74,6 +97,10 @@ public void keyPressed()
 	{
 		f = true;
 	}
+	if(key == 'e')
+	{
+		e = true;
+	}
 }
 
 public void keyReleased()
@@ -93,5 +120,9 @@ public void keyReleased()
 	if(key == 'f')
 	{
 		f = false;
+	}
+	if(key == 'e')
+	{
+		e = false;
 	}
 }

@@ -4,8 +4,8 @@ class Star
 
   public Star()
   {
-  	myX = (int)(Math.random() * 600);
-  	myY = (int)(Math.random() * 600);
+  	myX = (int)(Math.random() * 900);
+  	myY = (int)(Math.random() * 900);
     mySize = (int)(Math.random() * 5) + 1;
   }
 
